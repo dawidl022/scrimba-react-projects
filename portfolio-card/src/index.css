@@ -13,7 +13,7 @@
 
 body {
   margin: 0;
-  background-color: #23252C;
+  background-color: #23252c;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,4 +27,10 @@ h1 {
 
 img {
   max-width: 100%;
+}
+
+@media (min-width: 420px) {
+  body {
+    padding: 1rem 0;
+  }
 }

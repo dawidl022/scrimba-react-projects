@@ -10,7 +10,7 @@ const Details: FC = () => {
         <h1 className="full-name">Laura Smith</h1>
         <div className="job-title">Frontend Developer</div>
       </div>
-      <div>laurasmith.webstie</div>
+      <p>laurasmith.website</p>
       <div className="cta-buttons container">
         <NewTab href="mailto:laura@smith" className="email-btn">
           <img alt="" src={emailIcon} />

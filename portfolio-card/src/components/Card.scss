@@ -1,5 +1,4 @@
 .card {
-  // TODO add prefers light theme option
   background-color: #1a1b21;
   border-radius: 10px;
   color: white;
@@ -11,18 +10,19 @@
 
   .details {
     margin: 1.25rem 0;
-  }
 
-  .headline {
-    margin: 0.5rem;
-  }
+    .headline {
+      margin: 0.5rem;
+    }
 
-  .full-name {
-    margin: 0.25rem 0;
-  }
+    .full-name {
+      margin: 0.25rem 0;
+    }
 
-  .job-title {
-    color: #f3bf99;
+    .job-title {
+      color: #f3bf99;
+      font-size: 1.2rem;
+    }
   }
 
   .cta-buttons {
@@ -30,11 +30,12 @@
     justify-content: center;
     gap: 1rem;
     margin: 1rem;
+    font-size: 1.1rem;
 
     & > * {
       flex: 1;
       border-radius: 6px;
-      padding: 0.6rem 1rem;
+      padding: 0.55rem 1rem;
       text-decoration: none;
       color: inherit;
       display: flex;
@@ -46,7 +47,7 @@
 
       &:hover,
       &:focus-visible {
-        filter: brightness(115%);
+        filter: brightness(1.15);
       }
     }
 
@@ -58,10 +59,6 @@
 
     .linkedin-btn {
       background-color: #5093e2;
-    }
-
-    .icon {
-      width: 1rem;
     }
   }
 
@@ -94,6 +91,32 @@
 
     img {
       width: 1.8rem;
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    background-color: #f5f5f5;
+    color: #2b283a;
+
+    p {
+      color: #4a4e74;
+    }
+
+    .job-title {
+      color: #f47d27;
+    }
+
+    .linkedin-btn {
+      background-color: #297fe5;
+      color: white;
+    }
+
+    .social-icons {
+      background-color: #d5d4d8;
+
+      a:hover {
+        filter: brightness(0.8);
+      }
     }
   }
 }
