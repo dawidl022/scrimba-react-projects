@@ -7,16 +7,21 @@ const Details: FC = () => {
   return (
     <div className="details">
       <div className="headline">
-        <h1 className="full-name">Laura Smith</h1>
-        <div className="job-title">Frontend Developer</div>
+        <h1 className="full-name">Dawid Lachowicz</h1>
+        <div className="job-title">Full Stack Developer</div>
       </div>
-      <p>laurasmith.website</p>
+      <NewTab href="https://dawidlachowicz.com" className="basic-link">
+        dawidlachowicz.com
+      </NewTab>
       <div className="cta-buttons container">
-        <NewTab href="mailto:laura@smith" className="email-btn">
+        <NewTab href="mailto:dawid.k.lachowicz@gmail.com" className="email-btn">
           <img alt="" src={emailIcon} />
           Email
         </NewTab>
-        <NewTab href="https://linkedin.com" className="linkedin-btn">
+        <NewTab
+          href="https://www.linkedin.com/in/dawid-k-lachowicz/"
+          className="linkedin-btn"
+        >
           <img alt="" src={linkedinIcon} />
           LinkedIn
         </NewTab>

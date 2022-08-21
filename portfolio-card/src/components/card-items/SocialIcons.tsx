@@ -19,7 +19,7 @@ const SocialIcons: FC = () => (
       <img src={instagramIcon} alt="Instagram" />
     </NewTab>
 
-    <NewTab href="https://github.com">
+    <NewTab href="https://github.com/dawidl022">
       <img src={githubIcon} alt="GitHub" />
     </NewTab>
   </footer>
