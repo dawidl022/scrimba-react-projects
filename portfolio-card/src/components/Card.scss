@@ -1,0 +1,99 @@
+.card {
+  // TODO add prefers light theme option
+  background-color: #1a1b21;
+  border-radius: 10px;
+  color: white;
+  max-width: 24rem;
+
+  .info {
+    text-align: center;
+  }
+
+  .details {
+    margin: 1.25rem 0;
+  }
+
+  .headline {
+    margin: 0.5rem;
+  }
+
+  .full-name {
+    margin: 0.25rem 0;
+  }
+
+  .job-title {
+    color: #f3bf99;
+  }
+
+  .cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1rem;
+
+    & > * {
+      flex: 1;
+      border-radius: 6px;
+      padding: 0.6rem 1rem;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      font-weight: 500;
+      transition: filter 0.2s ease-out;
+
+      &:hover,
+      &:focus-visible {
+        filter: brightness(115%);
+      }
+    }
+
+    .email-btn {
+      background-color: #ffffff;
+      border: 1px solid #d1d5db;
+      color: #374151;
+    }
+
+    .linkedin-btn {
+      background-color: #5093e2;
+    }
+
+    .icon {
+      width: 1rem;
+    }
+  }
+
+  .container {
+    --margin: 2.25rem;
+    margin-left: var(--margin);
+    margin-right: var(--margin);
+  }
+
+  .content {
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .social-icons {
+    background-color: #161619;
+    border-radius: 0 0 10px 10px;
+    padding: 1.2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    a {
+      transition: filter 0.3s ease-out;
+    }
+
+    a:hover {
+      filter: brightness(1.3);
+    }
+
+    img {
+      width: 1.8rem;
+    }
+  }
+}
