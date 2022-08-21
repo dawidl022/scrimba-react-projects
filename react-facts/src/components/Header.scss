@@ -1,0 +1,19 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  background-color: #21222a;
+}
+
+.logo-text {
+  color: #00d8ff;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-right: auto;
+}
+
+.course-title {
+  font-weight: 600;
+}
