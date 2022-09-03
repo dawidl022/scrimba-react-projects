@@ -1,0 +1,60 @@
+.card {
+  .bold {
+    font-weight: bold;
+  }
+
+  font-size: 0.74rem;
+  width: 11rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex-shrink: 0;
+
+  .image {
+    position: relative;
+
+    img {
+      max-width: 100%;
+    }
+
+    .status {
+      background-color: #fff;
+      border-radius: 2px;
+      font-size: 0.7rem;
+      left: 0.5rem;
+      line-height: 0.7rem;
+      padding: 0.2rem;
+      position: absolute;
+      text-transform: uppercase;
+      top: 0.5rem;
+    }
+  }
+
+  .below-img {
+    display: flex;
+    gap: 0.3em;
+
+    .rating::before {
+      content: "";
+      background-image: url(../assets/star.svg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      display: inline-block;
+      width: 0.8rem;
+      aspect-ratio: 1 / 1;
+      margin-right: 0.2em;
+    }
+
+    .meta {
+      color: #918e9b;
+    }
+  }
+  .description {
+    margin: 0;
+  }
+
+  .price {
+    display: flex;
+    gap: 0.3rem;
+  }
+}

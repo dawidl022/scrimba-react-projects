@@ -1,0 +1,25 @@
+.hero {
+  margin: 2.25rem;
+  display: flex;
+  flex-direction: column;
+
+  @media (orientation: landscape) {
+    min-height: calc(100vh - 8rem);
+  }
+
+  .hero-img {
+    box-sizing: border-box;
+    align-self: center;
+    max-width: 50rem;
+    flex: 1;
+  }
+
+  .title {
+    margin: 2rem 0 0;
+    font-size: 2.25rem;
+  }
+
+  .cta-text {
+    max-width: 20rem;
+  }
+}
