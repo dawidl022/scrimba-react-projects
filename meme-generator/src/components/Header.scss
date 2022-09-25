@@ -1,0 +1,19 @@
+.header {
+  background: var(--main-gradient);
+  color: white;
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  h1 {
+    font-size: 1.3rem;
+  }
+
+  .subtitle {
+    margin-left: auto;
+    margin-right: 2rem;
+  }
+}
