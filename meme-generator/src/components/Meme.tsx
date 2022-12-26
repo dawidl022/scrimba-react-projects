@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, FormEvent, useState } from "react";
+import { ChangeEvent, FC, FormEvent, useEffect, useState } from "react";
 import memeResponse, {
   Meme as MemeImage,
   MemeApiResponse,
@@ -15,9 +15,14 @@ const Meme: FC = () => {
   const [allMemeImages, setAllMemeImages] =
     useState<MemeApiResponse>(memeResponse);
 
-  const [memeImage, setMemeImage] = useState<MemeImage>(
-    memeResponse.data.memes.filter(x => x.id === "61579")[0]
-  );
+  const [memeImage, setMemeImage] = useState<MemeImage>({
+    id: "61579",
+    name: "One Does Not Simply",
+    url: "https://i.imgflip.com/1bij.jpg",
+    width: 568,
+    height: 335,
+    box_count: 2,
+  });
 
   const [meme, setMeme] = useState<MemeData>({
     topText: "One does not simply",
@@ -42,6 +47,13 @@ const Meme: FC = () => {
       [name]: value,
     }));
   };
+
+  useEffect(() => {
+    const response: Promise<MemeApiResponse> = fetch(
+      "https://api.imgflip.com/get_memes"
+    ).then(res => res.json());
+    response.then(data => setAllMemeImages(data));
+  }, []);
 
   return (
     <main className="memeContainer">
