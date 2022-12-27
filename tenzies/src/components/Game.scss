@@ -1,0 +1,32 @@
+.game {
+  padding-bottom: 0.1rem;
+}
+
+.dice {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.5rem;
+  margin: 0 3rem;
+
+  * {
+    aspect-ratio: 1;
+  }
+}
+
+.roll-btn {
+  border-radius: 4px;
+  background-color: #5035ff;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+  padding: 0.7rem 2.5rem;
+  margin: 2rem auto;
+  display: block;
+  transition: filter 0.2s ease-out;
+
+  &:hover,
+  &:focus-visible {
+    filter: brightness(1.2);
+  }
+}
