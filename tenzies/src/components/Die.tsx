@@ -13,7 +13,12 @@ const Die: FC<DieProps> = ({ value, isSelected, toggleSelect }) => {
       className={`die${isSelected ? " active" : ""}`}
       onClick={toggleSelect}
     >
-      {value}
+      <div className={`face face${value}`}>
+        {Array.apply(null, Array(value)).map((_, i) => (
+          <div className={`dot dot${i + 1}`}></div>
+        ))}
+        <span className="sr-only">{value}</span>
+      </div>
     </button>
   );
 };

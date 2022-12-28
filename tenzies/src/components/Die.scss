@@ -1,14 +1,69 @@
 .die {
   background-color: #ffffff;
   box-shadow: 0px 2px 2px 0px #00000026;
-  display: flex;
-  justify-content: center;
+  padding: 0.5rem;
   font-size: 1.8rem;
   font-weight: 700;
   align-items: center;
   border-radius: 4px;
+  transition: filter 0.2s ease-out;
+
+  .face {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+  }
+
+  .face2 {
+    grid-template-columns: repeat(2, 1fr);
+    transform: rotate(45deg);
+    gap: 1.8rem;
+    margin: -0.5rem;
+  }
+
+  .face3 {
+    grid-template-columns: repeat(3, 1fr);
+    transform: rotate(45deg);
+    gap: 0.6rem;
+    margin: -0.5rem;
+  }
+
+  .face4 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.4rem;
+  }
+
+  .face5 {
+    grid-template-columns: repeat(2, 1fr);
+
+    .dot3 {
+      grid-column: 1 / -1;
+    }
+    gap: 0.5rem 1.2rem;
+  }
+
+  .face6 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem 1.2rem;
+  }
 
   &.active {
     background-color: #59e391;
+  }
+
+  .dot::before {
+    width: 0.5rem;
+    height: 0.5rem;
+    border-radius: 50%;
+    background-color: black;
+    display: block;
+    content: "";
+  }
+
+  &:hover,
+  &:focus-visible {
+    filter: brightness(0.9);
   }
 }

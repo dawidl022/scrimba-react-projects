@@ -1,4 +1,5 @@
 import { FC, useState } from "react";
+import Confetti from "react-confetti";
 import Die from "./Die";
 import "./Game.scss";
 
@@ -41,10 +42,7 @@ const Game: FC = () => {
   };
 
   const isGameOver = (): boolean => {
-    return (
-      dice.filter(die => die.isSelected && die.value === dice[0].value)
-        .length == dice.length
-    );
+    return dice.every(die => die.isSelected && die.value === dice[0].value);
   };
 
   const resetDice = () => {
@@ -60,13 +58,16 @@ const Game: FC = () => {
             value={die.value}
             isSelected={die.isSelected}
             toggleSelect={() => toggleDice(die.id)}
-          ></Die>
+          />
         ))}
       </div>
       {isGameOver() ? (
-        <button className="roll-btn" onClick={resetDice}>
-          Reset Game
-        </button>
+        <>
+          <Confetti />
+          <button className="roll-btn" onClick={resetDice}>
+            Reset Game
+          </button>
+        </>
       ) : (
         <button className="roll-btn" onClick={reRollDice}>
           Roll
