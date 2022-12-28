@@ -1,4 +1,4 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import Confetti from "react-confetti";
 import Die from "./Die";
 import "./Game.scss";
@@ -22,6 +22,32 @@ const Game: FC = () => {
     }));
 
   const [dice, setDice] = useState(randomDice());
+  const [rollCount, setRollCount] = useState(1);
+  const [timeElapsed, setTimeElapsed] = useState(0);
+  const [timerInterval, setTimerInterval] = useState(0);
+
+  const newTimerInterval = (): number => {
+    return setInterval(
+      () => setTimeElapsed(prevTimeElapsed => prevTimeElapsed + 1),
+      1000
+    );
+  };
+
+  useEffect(() => {
+    const interval = newTimerInterval();
+    setTimerInterval(interval);
+
+    return () => {
+      clearInterval(interval);
+      clearInterval(timerInterval);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (isGameOver()) {
+      clearInterval(timerInterval);
+    }
+  }, [dice]);
 
   const toggleDice = (dieId: number) => {
     setDice(prevDice =>
@@ -39,6 +65,7 @@ const Game: FC = () => {
         prevDie.isSelected ? prevDie : { ...prevDie, value: rollDie() }
       )
     );
+    setRollCount(prevRollCount => prevRollCount + 1);
   };
 
   const isGameOver = (): boolean => {
@@ -47,10 +74,25 @@ const Game: FC = () => {
 
   const resetDice = () => {
     setDice(randomDice());
+    setRollCount(1);
+    setTimeElapsed(0);
+    setTimerInterval(newTimerInterval());
+  };
+
+  const formatSeconds = (totalSeconds: number): string => {
+    const minutes = Math.floor(totalSeconds / 60);
+    const seconds = (totalSeconds % 60 < 10 ? "0" : "") + (totalSeconds % 60);
+    return `${minutes}:${seconds}`;
   };
 
   return (
     <div className="game">
+      <div className="stats">
+        <div className="time-elapsed">
+          Time elapsed: {formatSeconds(timeElapsed)}
+        </div>
+        <div className="roll-count">Roll count: {rollCount}</div>
+      </div>
       <div className="dice">
         {dice.map(die => (
           <Die
