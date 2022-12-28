@@ -1,4 +1,5 @@
 import { FC } from "react";
+import "./Start.scss";
 
 interface StartProps {
   startGame: () => void;
@@ -6,10 +7,14 @@ interface StartProps {
 
 const Start: FC<StartProps> = ({ startGame }) => {
   return (
-    <header>
-      <h1>Quizzical</h1>
-      <p>A simple trivia game</p>
-      <button onClick={startGame}>Start game</button>
+    <header className="start">
+      <div>
+        <h1 className="title">Quizzical</h1>
+        <p className="description">A simple trivia game</p>
+      </div>
+      <button className="basic-btn" onClick={startGame}>
+        Start quiz
+      </button>
     </header>
   );
 };

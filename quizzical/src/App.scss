@@ -1,0 +1,30 @@
+.main {
+  font-family: "Karla", sans-serif;
+  color: #293264;
+  min-height: 100vh;
+  background-color: #f5f7fb;
+  background-image: url(assets/blob5.svg), url(assets/blob6.svg);
+  background-position: top right, bottom left;
+  background-repeat: no-repeat, no-repeat;
+  transition: background-position ease-out 0.5s;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+
+  &.playing {
+    background-position: top -50px right -50px, bottom -50px left -50px;
+  }
+}
+
+.basic-btn {
+  color: #f5f7fb;
+  background-color: #4d5b9e;
+  padding: 0.9rem 3rem;
+  cursor: pointer;
+  border-radius: 15px;
+  font-weight: 600;
+
+  &:focus-visible {
+    filter: brightness(1.3);
+  }
+}

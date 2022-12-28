@@ -1,6 +1,7 @@
 import { nanoid } from "nanoid";
 import { FC, FormEvent, useEffect, useState } from "react";
 import Question from "../components/Question";
+import "./Quiz.scss";
 
 interface OpenTDBResponse {
   results: TriviaResponseQuestion[];
@@ -78,7 +79,7 @@ const Quiz: FC = () => {
   };
 
   return questions ? (
-    <form onSubmit={checkAnswers}>
+    <form onSubmit={checkAnswers} className="quiz">
       {questions.map(q => (
         <Question
           key={q.id}
@@ -88,22 +89,26 @@ const Quiz: FC = () => {
           submitted={submitted}
         />
       ))}
-      {submitted ? (
-        <div>
-          <span>
-            You scored {numberOfAnswersCorrect()}/{QUESTION_COUNT} correct
-            answers
-          </span>
-          <button type="button" onClick={resetQuiz}>
-            Play again
+      <div className="bottom">
+        {submitted ? (
+          <>
+            <span className="results">
+              You scored {numberOfAnswersCorrect()}/{QUESTION_COUNT} correct
+              answers
+            </span>
+            <button type="button" onClick={resetQuiz} className="basic-btn">
+              Play again
+            </button>
+          </>
+        ) : (
+          <button type="submit" className="basic-btn">
+            Check answers
           </button>
-        </div>
-      ) : (
-        <button type="submit">Check answers</button>
-      )}
+        )}
+      </div>
     </form>
   ) : (
-    <span>Loading...</span>
+    <span className="loading">Loading...</span>
   );
 };
 

@@ -1,4 +1,5 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
+import "./Question.scss";
 
 interface QuestionProps {
   id: string;
@@ -35,10 +36,18 @@ const Question: FC<QuestionProps> = ({
     return answers;
   };
 
+  const isCorrect = (answer: string): boolean =>
+    submitted && answer === correctAnswer;
+
+  const isIncorrectlySelected = (answer: string): boolean =>
+    submitted && answer === selectedAnswer && answer !== correctAnswer;
+
   return (
-    <fieldset>
+    <fieldset className="question">
       <legend>
         <h2>{decodeHtml(question)}</h2>
+      </legend>
+      <div className="answers">
         {allAnswers().map((answer, i) => {
           const answerId = `${id}-${i}`;
           return (
@@ -50,20 +59,23 @@ const Question: FC<QuestionProps> = ({
                 checked={answer === selectedAnswer}
                 onChange={() => selectAnswer(answer)}
                 disabled={submitted}
+                className={`sr-only answer-radio-btn
+                  ${isCorrect(answer) ? "correct" : ""} 
+                  ${isIncorrectlySelected(answer) ? "incorrect" : ""}`}
               />
-              <label htmlFor={answerId}>
+              <label htmlFor={answerId} className="answer-btn">
                 {decodeHtml(answer)}
-                {submitted && answer === correctAnswer && (
-                  <span> - correct answer</span>
+                {isCorrect(answer) && (
+                  <span className="sr-only"> - correct answer</span>
                 )}
-                {submitted &&
-                  answer === selectedAnswer &&
-                  answer !== correctAnswer && <span> - incorrect answer</span>}
+                {isIncorrectlySelected(answer) && (
+                  <span className="sr-only"> - incorrect answer</span>
+                )}
               </label>
             </div>
           );
         })}
-      </legend>
+      </div>
     </fieldset>
   );
 };

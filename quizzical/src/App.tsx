@@ -1,13 +1,13 @@
 import { FC, useState } from "react";
 import Quiz from "./screens/Quiz";
 import Start from "./screens/Start";
-import "./App.css";
+import "./App.scss";
 
 const App: FC = () => {
   const [gameStarted, setGameStarted] = useState(false);
 
   return (
-    <main>
+    <main className={`main${gameStarted ? " playing" : ""}`}>
       {gameStarted ? (
         <Quiz />
       ) : (

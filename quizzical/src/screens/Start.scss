@@ -1,0 +1,10 @@
+.start {
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+  text-align: center;
+
+  .title {
+    font-size: 3rem;
+  }
+}
