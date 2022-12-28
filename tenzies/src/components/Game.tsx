@@ -46,6 +46,14 @@ const Game: FC = () => {
   useEffect(() => {
     if (isGameOver()) {
       clearInterval(timerInterval);
+
+      if (isBestRollCount()) {
+        localStorage.setItem("bestRollCount", rollCount.toString());
+      }
+
+      if (isBestTime()) {
+        localStorage.setItem("bestTime", timeElapsed.toString());
+      }
     }
   }, [dice]);
 
@@ -85,13 +93,35 @@ const Game: FC = () => {
     return `${minutes}:${seconds}`;
   };
 
+  const isBestTime = (): boolean => {
+    const bestTime = parseFloat(localStorage.getItem("bestTime") ?? "Infinity");
+    return timeElapsed <= bestTime;
+  };
+
+  const isBestRollCount = (): boolean => {
+    const bestRollCount = parseFloat(
+      localStorage.getItem("bestRollCount") ?? "Infinity"
+    );
+    return rollCount <= bestRollCount;
+  };
+
   return (
     <div className="game">
       <div className="stats">
-        <div className="time-elapsed">
+        <div
+          className={`time-elapsed${
+            isGameOver() && isBestTime() ? " best" : ""
+          }`}
+        >
           Time elapsed: {formatSeconds(timeElapsed)}
         </div>
-        <div className="roll-count">Roll count: {rollCount}</div>
+        <div
+          className={`roll-count${
+            isGameOver() && isBestRollCount() ? " best" : ""
+          }`}
+        >
+          Roll count: {rollCount}
+        </div>
       </div>
       <div className="dice">
         {dice.map(die => (

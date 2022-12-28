@@ -36,4 +36,20 @@
   display: flex;
   margin: 0 3rem 1rem;
   justify-content: space-between;
+
+  .best {
+    position: relative;
+    font-weight: normal;
+    text-shadow: 0 0 30px #000;
+    color: #006d2c;
+
+    &::before {
+      color: #009c3e;
+      content: "New best!";
+      display: block;
+      position: absolute;
+      top: -1.2em;
+      font-weight: bold;
+    }
+  }
 }
