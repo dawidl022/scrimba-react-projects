@@ -33,6 +33,9 @@ const App: FC = () => {
     setText(e.target.value);
   };
 
+  const countWords = (words: string): number =>
+    words.split(" ").filter(word => word.length > 0).length;
+
   return (
     <main>
       <h1>How fast do you type</h1>
@@ -47,7 +50,7 @@ const App: FC = () => {
       <button disabled={timeRemaining > 0} onClick={startGame}>
         {gameOver ? "Play again" : "Start"}
       </button>
-      {gameOver && <p>Word count: {text.split(" ").length}</p>}
+      {gameOver && <p>Word count: {countWords(text)}</p>}
     </main>
   );
 };
