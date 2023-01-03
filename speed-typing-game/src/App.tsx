@@ -1,5 +1,4 @@
 import { ChangeEvent, FC, useEffect, useState } from "react";
-import "./App.scss";
 
 const GAME_TIME = 10;
 
