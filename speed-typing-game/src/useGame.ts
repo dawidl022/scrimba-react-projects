@@ -2,10 +2,8 @@ import { useEffect, useState } from "react";
 
 const GAME_TIME = 10;
 
-const useGame = (
-  text: string,
-  setText: React.Dispatch<React.SetStateAction<string>>
-) => {
+const useGame = () => {
+  const [text, setText] = useState("");
   const [timeRemaining, setTimeRemaining] = useState(0);
   const [gameOver, setGameOver] = useState(false);
 
@@ -37,8 +35,10 @@ const useGame = (
 
   return {
     startGame,
+    setText,
     countWords,
     gameOver,
+    text,
     timeRemaining,
   };
 };

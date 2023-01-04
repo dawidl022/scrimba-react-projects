@@ -2,11 +2,8 @@ import { ChangeEvent, FC, useEffect, useState, useRef } from "react";
 import useGame, { GAME_TIME } from "./useGame";
 
 const App: FC = () => {
-  const [text, setText] = useState("");
-  const { startGame, countWords, gameOver, timeRemaining } = useGame(
-    text,
-    setText
-  );
+  const { startGame, setText, countWords, gameOver, text, timeRemaining } =
+    useGame();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   useEffect(() => {
