@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, useEffect, useState } from "react";
+import { ChangeEvent, FC, useEffect, useState, useRef } from "react";
 
 const GAME_TIME = 10;
 
@@ -6,6 +6,7 @@ const App: FC = () => {
   const [timeRemaining, setTimeRemaining] = useState(0);
   const [text, setText] = useState("");
   const [gameOver, setGameOver] = useState(false);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const startGame = () => {
     setTimeRemaining(GAME_TIME);
@@ -22,10 +23,12 @@ const App: FC = () => {
   };
 
   useEffect(() => {
-    if (timeRemaining == 0 && text.length > 0) {
-      setGameOver(true);
-    } else {
+    if (timeRemaining === GAME_TIME) {
       setGameOver(false);
+      textareaRef.current?.focus();
+    }
+    if (timeRemaining === 0 && text.length > 0) {
+      setGameOver(true);
     }
   }, [timeRemaining]);
 
@@ -40,6 +43,7 @@ const App: FC = () => {
     <main>
       <h1>How fast do you type</h1>
       <textarea
+        ref={textareaRef}
         disabled={timeRemaining <= 0}
         cols={30}
         rows={10}
