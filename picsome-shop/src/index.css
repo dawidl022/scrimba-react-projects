@@ -1,0 +1,50 @@
+:root {
+  --black: #150605;
+  --red: #ea453c;
+  --pink: #f47b6e;
+  --light-blue: #effbfe;
+  --blue: #ace6ec;
+}
+
+html,
+body {
+  font-family: "Oswald", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+}
+
+ul {
+  all: unset;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: var(--light-blue);
+}
+a:hover {
+  color: var(--light-blue);
+}
+a:active {
+  color: var(--light-blue);
+}
+
+.sr-only {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}

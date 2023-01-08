@@ -1,8 +1,9 @@
-import { FC, useEffect, useState } from "react";
-import { PicsumImage } from "../types";
+import { FC, useState } from "react";
+import BinIcon from "../components/BinIcon";
+import { Image } from "../types";
 
 interface CartProps {
-  cartItems: PicsumImage[];
+  cartItems: Image[];
   toggleCartItem: (itemId: string) => void;
   clearCart: () => void;
 }
@@ -27,24 +28,32 @@ const Cart: FC<CartProps> = ({ cartItems, toggleCartItem, clearCart }) => {
   };
 
   return (
-    <div>
-      <h2>Check out</h2>
+    <div className="cart-page">
+      <h2 className="heading">Check out</h2>
+
       <ul>
         {cartItems.map(item => (
-          <li key={item.id}>
+          <li key={item.id} className="cart-item">
             <button onClick={() => toggleCartItem(item.id)}>
-              Remove from cart
+              <span className="sr-only">Remove from cart</span>
+              <BinIcon />
             </button>
-            <img className="image" src={item.download_url} />
+            <img className="image" src={item.src} />
             <span>{formatPrice(ITEM_PRICE)}</span>
           </li>
         ))}
       </ul>
-      <div>Total: {formatPrice(totalPrice)}</div>
+
+      <div className="total-cost">Total: {formatPrice(totalPrice)}</div>
+
       {cartItems.length === 0 ? (
         <p>You have no items in your cart</p>
       ) : (
-        <button disabled={placingOrder} onClick={placeOrder}>
+        <button
+          disabled={placingOrder}
+          onClick={placeOrder}
+          className="order-button"
+        >
           {placingOrder ? "Ordering" : "Place order"}
         </button>
       )}

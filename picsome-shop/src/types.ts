@@ -3,4 +3,10 @@ interface PicsumImage {
   download_url: string;
 }
 
-export type { PicsumImage };
+interface Image {
+  id: string;
+  src: string;
+  displayClass: string;
+}
+
+export type { PicsumImage, Image };
