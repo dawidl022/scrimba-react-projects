@@ -1,12 +1,8 @@
-interface PicsumImage {
-  id: string;
-  download_url: string;
-}
-
 interface Image {
   id: string;
   src: string;
   displayClass: string;
+  isFavorite: boolean;
 }
 
-export type { PicsumImage, Image };
+export type { Image };

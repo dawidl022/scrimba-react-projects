@@ -1,25 +1,18 @@
-import { FC, useMemo } from "react";
+import { FC, useContext } from "react";
+import { ImageContext } from "../ImageContext";
 import ImageProduct from "../components/ImageProduct";
 import { Image } from "../types";
-import useToggleList from "../useToggleList";
 
 interface HomeProps {
-  images: Image[];
   cartItems: Image[];
   toggleCartItem: (itemId: string) => void;
-  favorites: Image[];
-  toggleFavorite: (itemId: string) => void;
 }
 
-const Home: FC<HomeProps> = ({
-  images,
-  cartItems,
-  toggleCartItem,
-  favorites,
-  toggleFavorite,
-}) => {
+const Home: FC<HomeProps> = ({ cartItems, toggleCartItem }) => {
+  const { images, toggleFavorite } = useContext(ImageContext);
+
   const containsId = (imageList: Image[], imageId: string): boolean =>
-    imageList.filter(item => item.id === imageId).length > 0;
+    imageList.some(item => item.id === imageId);
 
   return (
     <main>
@@ -28,7 +21,7 @@ const Home: FC<HomeProps> = ({
           <li key={image.id} className={`photo ${image.displayClass}`}>
             <ImageProduct
               src={image.src}
-              isFavorite={containsId(favorites, image.id)}
+              isFavorite={image.isFavorite}
               toggleFavorite={() => toggleFavorite(image.id)}
               isInCart={containsId(cartItems, image.id)}
               toggleCart={() => toggleCartItem(image.id)}

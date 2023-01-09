@@ -15,7 +15,7 @@ const useToggleList = <T extends Item>(allItems: T[]): ToggleList<T> => {
 
   const toggleItem = (itemId: string) => {
     setItems(prevItems => {
-      if (prevItems.filter(fav => fav.id === itemId).length > 0) {
+      if (prevItems.some(fav => fav.id === itemId)) {
         return prevItems.filter(fav => fav.id !== itemId);
       } else {
         const newAddition = allItems.find(img => img.id === itemId);
