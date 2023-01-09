@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface Item {
   id: string;
@@ -10,8 +10,13 @@ type ToggleList<T extends Item> = [
   clearItems: () => void
 ];
 
-const useToggleList = <T extends Item>(allItems: T[]): ToggleList<T> => {
-  const [items, setItems] = useState<T[]>([]);
+const useToggleList = <T extends Item>(
+  allItems: T[],
+  collectionId: string
+): ToggleList<T> => {
+  const [items, setItems] = useState<T[]>(
+    JSON.parse(localStorage.getItem(collectionId) ?? "[]")
+  );
 
   const toggleItem = (itemId: string) => {
     setItems(prevItems => {
@@ -23,6 +28,10 @@ const useToggleList = <T extends Item>(allItems: T[]): ToggleList<T> => {
       }
     });
   };
+
+  useEffect(() => {
+    localStorage.setItem(collectionId, JSON.stringify(items));
+  }, [items]);
 
   const clearItems = () => {
     setItems([]);

@@ -3,13 +3,13 @@ import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Cart from "./pages/Cart";
 import Home from "./pages/Home";
-import useToggleList from "./useToggleList";
+import useToggleList from "./hooks/useToggleList";
 import { ImageContext } from "./ImageContext";
 import "./App.scss";
 
 const App: FC = () => {
   const { images } = useContext(ImageContext);
-  const [cartItems, toggleCartItem, clearCart] = useToggleList(images);
+  const [cartItems, toggleCartItem, clearCart] = useToggleList(images, "cart");
 
   return (
     <>
