@@ -1,20 +1,15 @@
-import { FC, useState } from "react";
+import { FC } from "react";
+import useHover from "../hooks/useHover";
 
 interface BinButtonProps {
   onClick: () => void;
 }
 
 const BinButton: FC<BinButtonProps> = ({ onClick }) => {
-  const [isFilled, setIsFilled] = useState(false);
+  const [isFilled, filledRef] = useHover<HTMLButtonElement>();
 
   return (
-    <button
-      onClick={onClick}
-      onMouseOver={() => setIsFilled(true)}
-      onMouseOut={() => setIsFilled(false)}
-      onFocus={() => setIsFilled(true)}
-      onBlur={() => setIsFilled(false)}
-    >
+    <button onClick={onClick} ref={filledRef}>
       <span className="sr-only">Remove from cart</span>
       <i
         className={`ri-delete-bin-${isFilled ? "fill" : "line"}`}
