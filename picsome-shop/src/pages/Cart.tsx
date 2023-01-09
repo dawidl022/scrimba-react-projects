@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import BinIcon from "../components/BinIcon";
+import BinButton from "../components/BinButton";
 import { Image } from "../types";
 
 interface CartProps {
@@ -15,7 +15,10 @@ const Cart: FC<CartProps> = ({ cartItems, toggleCartItem, clearCart }) => {
   const [placingOrder, setPlacingOrder] = useState(false);
 
   const formatPrice = (priceInCents: number): string => {
-    return `$${(priceInCents / 100).toFixed(2)}`;
+    return (priceInCents / 100).toLocaleString("en-GB", {
+      style: "currency",
+      currency: "GBP",
+    });
   };
 
   const placeOrder = () => {
@@ -34,10 +37,7 @@ const Cart: FC<CartProps> = ({ cartItems, toggleCartItem, clearCart }) => {
       <ul>
         {cartItems.map(item => (
           <li key={item.id} className="cart-item">
-            <button onClick={() => toggleCartItem(item.id)}>
-              <span className="sr-only">Remove from cart</span>
-              <BinIcon />
-            </button>
+            <BinButton onClick={() => toggleCartItem(item.id)} />
             <img className="image" src={item.src} />
             <span>{formatPrice(ITEM_PRICE)}</span>
           </li>
